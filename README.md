@@ -28,7 +28,7 @@ More visualizations can be found in the Videos directory.
 
 Here are the final timing results:
 
-<img src="./timing_results.png" width=200 alt="Timing Results"></img>
+<img src="./timing_results.png" width=400 alt="Timing Results"></img>
 
 The results demonstrate substantial speedups using GPU acceleration compared to single-threaded CPU execution, with OpenMP providing intermediate improvements.
 

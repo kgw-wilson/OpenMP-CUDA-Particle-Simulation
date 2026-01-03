@@ -1,25 +1,46 @@
 # Particle Simulation with OpenMP and CUDA
 
-This repo contains the formatted code for my final project in UW-Madison's CS759 class on high-performance computing (HPC). This class and was great and the instructor [Dan Negrut](https://sbel.wisc.edu/negrut-dan/) was awesome!
+This repository contains the code for my final project in CS759: High-Performance Computing at UW–Madison. The project explores efficient strategies for simulating particle motion under gravity (the N-Body problem) using sequential CPU, multi-threaded CPU (OpenMP), and GPU (CUDA) approaches.
 
-Below is the abstract of the report I wrote for the project:
+## Overview
 
-This project evaluates different approaches to the N-Body problem of simulating the
-movement of particles in a vacuum due to gravity. The project reports on various
-strategies one can use to speed up the calculations for this problem, and it demonstrates
-the resulting performance increases. In particular, the project evaluates the differences
-between sequential CPU, multi-threaded CPU, and GPU computing for use in the N-Body
-problem. Finally, the project demonstrates a virtual reality (VR) application deployed on a
-VR headset that lets a user see the result of the simulation.
+For detailed methodology, results, and discussion, see [Report.pdf](./Report.pdf).
+
+The project evaluates the computational performance of different simulation strategies and demonstrates the resulting speedups. It also includes a virtual reality (VR) application that visualizes the simulation in 3D, allowing users to explore particle dynamics interactively.
+
+Key components:
+
+• Sequential CPU simulation – baseline implementation.
+
+• OpenMP multi-threaded simulation – CPU parallelization.
+
+• CUDA GPU simulation – fully GPU-accelerated computation.
+
+• VR visualization – 3D representation of particle positions and densities.
+
+## Visualizations
+
+More visualizations can be found in the Videos directory.
 
 ![Positions Gif](./Videos/Positions.gif)
 
-For more info, please read the report in the "Report" folder of this repo. Here are Google Drive links to the final videos for the project!
-
-[VR_particles Video](https://drive.google.com/file/d/11kQmZDws5c1wMZ4iYoyO9fRT9pgTcrI-/view?usp=sharing)
-
-[VR_densities Video](https://drive.google.com/file/d/1jtKgxjfQTuemtsDpGf-hM3MsUlH54fhp/view?usp=sharing)
+## Performance Results
 
 Here are the final timing results:
 
-<img src="./Images/TimingResult.png" width=200 alt="Timing Results"></img>
+<img src="./timing_results.png" width=200 alt="Timing Results"></img>
+
+The results demonstrate substantial speedups using GPU acceleration compared to single-threaded CPU execution, with OpenMP providing intermediate improvements.
+
+## Limitations and Future Work
+
+While this project demonstrates the performance benefits of parallel CPU and GPU simulations, there are a few limitations and opportunities for improvement:
+
+• Limited collision handling: Current collisions are handled simplistically; more physically accurate models could improve realism.
+
+• Single-node computation: The simulations run on one machine. Using MPI could allow distributed simulations across multiple nodes and provide another useful result.
+
+• Floating-point differences: Small numerical differences arise between CPU and GPU results due to parallelization and single-precision calculations.
+
+• Visualization in Unity: Particle visualization in the Unity-based VR application relies on standard GameObject representations. While simple and flexible, this approach does not scale well to very large particle counts, as Unity supports only a limited number of active GameObjects per scene without significant performance degradation. More scalable alternatives—such as GPU instancing, custom meshes, compute-shader–driven rendering, or Unity’s particle systems—could enable visualization of substantially larger simulations. These approaches were not explored due to time constraints.
+
